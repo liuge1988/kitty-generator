@@ -6,21 +6,15 @@
         <img src="@/assets/logo.png" v-if="collapse" /> <div>{{collapse?'':appName}}</div>
     </div>
     <!-- 导航菜单 -->
-    <el-menu default-active="1" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
+    <el-menu default-active="0" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
       :collapse="collapse" @open="handleopen" @close="handleclose" @select="handleselect">
-      <el-submenu index="1">
-        <template slot="title">
-          <i class="el-icon-location"></i>
-          <span>导航菜单一</span>
-        </template>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>
-      </el-submenu>
-      <el-menu-item index="2">
-        <i class="el-icon-menu"></i>
-        <span slot="title" @click="$router.push('single')">导航菜单二</span>
+      <el-menu-item index="1" @click="$router.push('single')">
+        <i class="el-icon-document"></i>
+        <span slot="title">{{$t("navMenu.singleTable")}}</span>
+      </el-menu-item>
+      <el-menu-item index="2" @click="$router.push('master')">
+        <i class="el-icon-tickets"></i>
+        <span slot="title">{{$t("navMenu.masterTable")}}</span>
       </el-menu-item>
     </el-menu>
 	</div>

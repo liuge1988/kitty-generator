@@ -10,7 +10,7 @@
         "config": "Config",
         "backup": "Backup",  
         "restore": "Restore",  
-        "backupRestore": "Backup Restore",  
+        "datasource": "Datasource",  
         "versionName": "Version",  
         "exit": "Exit"
     },
@@ -23,12 +23,15 @@
         "search": "Search",
         "loading": "loading",
         "submit": "Submit",
+        "save": "Save",
+        "test": "test",
         "comfirm": "Comfirm",
         "cancel": "Cancel",
         "reset": "Reset"
     },
-    "sys": {
-        "sysMng": "System Manage",
+    "navMenu": {
+        "singleTable": "single table",
+        "masterTable": "master table",
         "userMng": "User Manage",
         "deptMng": "Dept Manage",
         "roleMng": "Role Manage",

@@ -4,6 +4,7 @@ import Home from '@/views/Home'
 import Intro from '@/views/Intro/Intro'
 import NotFound from '@/views/404'
 import SingleTable from '@/views/generate/SingleTable'
+import MasterTable from '@/views/generate/MasterTable'
 
 Vue.use(Router)
 
@@ -21,8 +22,13 @@ export default new Router({
         },
         { 
           path: 'single', 
-          name: '单笔查询', 
+          name: '单表查询', 
           component: SingleTable 
+        },
+        { 
+          path: 'master', 
+          name: '主从表格', 
+          component: MasterTable 
         }
       ]
     }

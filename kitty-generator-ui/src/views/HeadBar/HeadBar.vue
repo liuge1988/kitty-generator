@@ -8,26 +8,29 @@
     <span class="nav-bar">
       <el-menu :default-active="activeIndex" class="el-menu-demo" 
           :background-color="themeColor" text-color="#fff" active-text-color="#ffd04b" mode="horizontal" @select="selectNavBar()">
-        <el-menu-item index="1" @click="$router.push('/')"><i class="fa fa-home fa-lg"></i>  </el-menu-item>
+        <el-menu-item index="1" @click="$router.push('/')"><i class="fa fa-home fa-2x"></i>  </el-menu-item>
         <el-menu-item index="2" @click="openWindow('https://gitee.com/liuge1988/kitty')">{{$t("common.projectRepo")}}</el-menu-item>
         <el-menu-item index="3" @click="openWindow('https://gitee.com/liuge1988/kitty/wikis/Home')">{{$t("common.doc")}}</el-menu-item>
         <el-menu-item index="4" @click="openWindow('https://www.cnblogs.com/xifengxiaoma/')">{{$t("common.blog")}}</el-menu-item>
       </el-menu>
     </span>
     <span class="tool-bar">
-      <!-- 语言切换 -->
-      <lang-selector class="lang-selector"></lang-selector>   
       <!-- 主题切换 -->
       <theme-picker class="theme-picker" :default="themeColor" @onThemeChange="onThemeChange"></theme-picker>
+      <!-- 语言切换 -->
+      <lang-selector class="lang-selector"></lang-selector>   
+      <!-- 数据源 -->
+      <el-button type="primary" icon="fa fa-database fa-2x" @click="configDatasource"></el-button>
       <!-- 用户信息 -->
-      <el-dropdown class="user-info-dropdown" trigger="hover" @command="handleCommand">
-        <span class="el-dropdown-link"> <i class="el-icon-setting"></i>  </span>
+      <el-dropdown class="user-info-dropdown" trigger="click" @command="handleCommand">
+        <el-button type="primary" icon="fa fa-bars fa-2x"></el-button>
         <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item command="bakcup">{{$t("common.backupRestore")}}</el-dropdown-item>
-          <el-dropdown-item divided @click.native="logout">{{$t("common.logout")}}</el-dropdown-item>
+          <el-dropdown-item command="datasource">{{$t("common.datasource")}}</el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
     </span>
+    <!--数据源配置界面-->
+    <datasource ref="datasource" v-if="datasourceVisible">  </datasource>
   </div>
 </template>
 
@@ -37,17 +40,20 @@ import mock from "@/mock/index"
 import Hamburger from "@/components/Hamburger"
 import ThemePicker from "@/components/ThemePicker"
 import LangSelector from "@/components/LangSelector"
+import Datasource from "@/views/Datasource/datasource"
 export default {
   components:{
-        Hamburger,
-        ThemePicker,
-        LangSelector
+    Hamburger,
+    ThemePicker,
+    LangSelector,
+    Datasource
   },
   data() {
     return {
       userName: "Louis",
       userAvatar: "",
-      activeIndex: '1'
+      activeIndex: '1',
+      datasourceVisible: false
     }
   },
   methods: {
@@ -66,23 +72,16 @@ export default {
       this.$store.commit('setThemeColor', themeColor)
     },
     handleCommand(command) {
-      if('bakcup' === command) {
-        this.handleBackup()
+      if('datasource' === command) {
+        this.configDatasource()
       }
     },
-    // 退出登录
-    logout: function() {
-      this.$confirm("确认退出吗?", "提示", {
-        type: "warning"
+    // 打开数据源配置界面
+    configDatasource: function() {
+      this.datasourceVisible = true
+      this.$nextTick(() => {
+          this.$refs.datasource.init()
       })
-      .then(() => {
-        sessionStorage.removeItem("user")
-        this.$router.push("/login")
-        this.$api.login.logout().then((res) => {
-          }).catch(function(res) {
-        })
-      })
-      .catch(() => {})
     }
   },
   mounted() {
@@ -123,18 +122,18 @@ export default {
   .tool-bar {
     float: right;
     .theme-picker {
-      padding-right: 10px;
+      padding-right: 25px;
+      font-size: 35px;
     }
     .lang-selector {
-      padding-right: 10px;
+      padding-right: 0px;
       font-size: 15px;
       color: #fff;
       cursor: pointer;
     }
     .user-info-dropdown {
-      font-size: 20px;
-      padding-left: 20px;
-      padding-right: 30px;
+      font-size: 30px;
+      padding-right: 5px;
       color: #fff;
       cursor: pointer;
       img {
