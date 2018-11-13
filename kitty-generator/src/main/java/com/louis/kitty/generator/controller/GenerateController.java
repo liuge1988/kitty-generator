@@ -25,7 +25,11 @@ public class GenerateController {
 	
 	@PostMapping("/testConnection")
 	public HttpResult testConnection(@RequestBody ConnParam connParam) {
-		return HttpResult.ok(generatorService.testConnection(connParam));
+		boolean success = generatorService.testConnection(connParam);
+		if(success) {
+			return HttpResult.ok(generatorService.testConnection(connParam));
+		}
+		return HttpResult.error("连接失败,请检查数据库及连接。");
 	}
 
 	@PostMapping("/getTables")

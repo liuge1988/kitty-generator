@@ -30,12 +30,11 @@
             <el-button size="small"  type="primary" :loading="testLoading" @click="testConn">{{$t('action.test')}}</el-button>
             <el-button size="small"  type="primary" :loading="testLoading" @click="saveConfig">{{$t('action.save')}}</el-button>
         </span>
-        </span>
 	</el-dialog>
 </template>
 
 <script>
-import axios from 'axios';
+import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -43,15 +42,11 @@ export default {
                 dbType: 'MySQL',
                 host: '127.0.0.1',
                 port: 3306,
-                userName: 'admin',
+                userName: 'root',
                 password: '123456',
                 dbName: 'kitty'
             },
-            tableData: [],   // 备份记录
-            editLoading: false,
-            showHeader: false,
             visible: true,
-            tableLoading: false,
             testLoading: false,
             baseUrl: this.global.baseUrl
 		}
@@ -65,14 +60,7 @@ export default {
             let dsStr = localStorage.getItem('datasource')
             if(dsStr != null) {
                 // 如果本地存储有数据源配置，则加载
-                let datasource = JSON.parse(dsStr);
-                let form = this.form
-                form.dbType = datasource.dbType,
-                form.host = datasource.host,
-                form.port = datasource.port,
-                form.userName = datasource.userName,
-                form.password = datasource.password,
-                form.dbName = datasource.dbName
+                this.form = JSON.parse(dsStr);
             }
 		},
 		// 保存配置
@@ -89,12 +77,12 @@ export default {
 		// 测试连接
 		testConn: function () {
             this.testLoading = true
-            axios.get(this.baseUrl + '/testConnection').then((res) => {
+            axios.post(this.baseUrl + '/testConnection', this.form).then((res) => {
                 res = res.data
                 if(res.code == 200) {
-                    this.$message({ message: '连接成功', type: 'success' })
+                    this.$message({ message: '测试连接成功', type: 'success' })
                 } else {
-                    this.$message({message: '连接失败, ' + res.msg, type: 'error'})
+                    this.$message({message: res.msg, type: 'error'})
                 }
                 this.testLoading = false
 			})

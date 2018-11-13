@@ -30,7 +30,7 @@
       </el-dropdown>
     </span>
     <!--数据源配置界面-->
-    <datasource ref="datasource" v-if="datasourceVisible">  </datasource>
+    <datasource-dialog ref="datasourceDialog" v-if="datasourceDialogVisible">  </datasource-dialog>
   </div>
 </template>
 
@@ -40,20 +40,20 @@ import mock from "@/mock/index"
 import Hamburger from "@/components/Hamburger"
 import ThemePicker from "@/components/ThemePicker"
 import LangSelector from "@/components/LangSelector"
-import Datasource from "@/views/Datasource/datasource"
+import DatasourceDialog from "@/views/Datasource/DatasourceDialog"
 export default {
   components:{
     Hamburger,
     ThemePicker,
     LangSelector,
-    Datasource
+    DatasourceDialog
   },
   data() {
     return {
       userName: "Louis",
       userAvatar: "",
       activeIndex: '1',
-      datasourceVisible: false
+      datasourceDialogVisible: false
     }
   },
   methods: {
@@ -78,9 +78,9 @@ export default {
     },
     // 打开数据源配置界面
     configDatasource: function() {
-      this.datasourceVisible = true
+      this.datasourceDialogVisible = true
       this.$nextTick(() => {
-          this.$refs.datasource.init()
+          this.$refs.datasourceDialog.init()
       })
     }
   },
