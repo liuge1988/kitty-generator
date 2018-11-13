@@ -149,11 +149,13 @@ export default {
     },
     // 获取要生成的表
     getTables() {
-      this.tableLoading = true;
-      let dsStr = localStorage.getItem("datasource");
+      let dsStr = localStorage.getItem("datasource")
+      dsStr =null
       if (dsStr == null) {
-        this.configDatasource();
+        this.$message({ message: '请先配置数据源', type: 'error' })
+        return
       }
+      this.tableLoading = true;
       dsStr = localStorage.getItem("datasource");
       axios.post(this.baseUrl + "/getTables", JSON.parse(dsStr)).then(res => {
         res = res.data;
