@@ -22,6 +22,8 @@ public class TableModel {
 	private String serviceImplPackageName;
 	/** Controller包名 */
 	private String controllerPackageName;
+	/** View目录名 */
+	private String viewPackageName;
 	/** 类名 */
 	private String className;
 	/** 实例名 */
@@ -84,6 +86,14 @@ public class TableModel {
 
 	public void setControllerPackageName(String controllerPackageName) {
 		this.controllerPackageName = controllerPackageName;
+	}
+
+	public String getViewPackageName() {
+		return viewPackageName;
+	}
+
+	public void setViewPackageName(String viewPackageName) {
+		this.viewPackageName = viewPackageName;
 	}
 
 	public String getClassName() {

@@ -50,6 +50,7 @@ public class GenerateServiceImpl implements GenerateService {
 	public static final String PACKAGE_SERVICE = "service";
 	public static final String PACKAGE_SERVICE_IMPL = "service.impl";
 	public static final String PACKAGE_CONTROLLER = "controller";
+	public static final String PACKAGE_VIEW = "view";
 	
 	public static final String SQL_MAP_SUFFIX = "Mapper.xml";
 	public static final String MODEL_SUFFIX = ".java";
@@ -57,6 +58,7 @@ public class GenerateServiceImpl implements GenerateService {
 	public static final String SERVICE_SUFFIX = "Service.java";
 	public static final String SERVICE_IMPL_SUFFIX = "ServiceImpl.java";
 	public static final String CONTROLLER_SUFFIX = "Controller.java";
+	public static final String VIEW_SUFFIX = ".vue";
 	
 	
 	@Autowired
@@ -139,6 +141,7 @@ public class GenerateServiceImpl implements GenerateService {
 			tableModel.setServicePackageName(getPakcageName(generateModel.getBasePackage(), PACKAGE_SERVICE));
 			tableModel.setServiceImplPackageName(getPakcageName(generateModel.getBasePackage(), PACKAGE_SERVICE_IMPL));
 			tableModel.setControllerPackageName(getPakcageName(generateModel.getBasePackage(), PACKAGE_CONTROLLER));
+			tableModel.setViewPackageName(getPakcageName(generateModel.getBasePackage(), PACKAGE_VIEW));
 			// generate model
 			generateModel(groupTemplate, tableModel, TEMPLATE_MODEL, generateModel.getOutPutFolderPath());
 			// generate mapper
@@ -151,6 +154,8 @@ public class GenerateServiceImpl implements GenerateService {
 			generateModel(groupTemplate, tableModel, TEMPLATE_SERVICE_IMPL, generateModel.getOutPutFolderPath());
 			// generate controller
 			generateModel(groupTemplate, tableModel, TEMPLATE_CONTROLLER, generateModel.getOutPutFolderPath());
+			// generate view
+			generateModel(groupTemplate, tableModel, TEMPLATE_VIEW, generateModel.getOutPutFolderPath());
 		}
 		return true;
 	}
@@ -204,6 +209,9 @@ public class GenerateServiceImpl implements GenerateService {
 		} else if(TEMPLATE_CONTROLLER.equals(templatePath)) {
 			packageName = tableModel.getControllerPackageName();
 			suffix = CONTROLLER_SUFFIX;
+		} else if(TEMPLATE_VIEW.equals(templatePath)) {
+			packageName = tableModel.getViewPackageName();
+			suffix = VIEW_SUFFIX;
 		}
 		outPutFolderPath = outPutFolderPath + "/" + packageName.replaceAll("\\.", "/");
 		File outPutFolder = new File(outPutFolderPath);
