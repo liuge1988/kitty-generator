@@ -9,11 +9,11 @@
     <el-menu default-active="0" :class="collapse?'menu-bar-collapse-width':'menu-bar-width'"
       :collapse="collapse" @open="handleopen" @close="handleclose" @select="handleselect">
       <el-menu-item index="1" @click="$router.push('single')">
-        <i class="el-icon-document"></i>
+        <i class="el-icon-service"></i>
         <span slot="title">{{$t("navMenu.singleTable")}}</span>
       </el-menu-item>
       <el-menu-item index="2" @click="$router.push('master')">
-        <i class="el-icon-tickets"></i>
+        <i class="el-icon-info"></i>
         <span slot="title">{{$t("navMenu.masterTable")}}</span>
       </el-menu-item>
     </el-menu>

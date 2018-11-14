@@ -13,7 +13,7 @@
 	<groupId>com.louis</groupId>
 	<artifactId>kitty-generator</artifactId>
 	<version>${project.version}</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	
 	<name>kitty-generator</name>
 	<description>kitty-generator</description>
@@ -79,6 +79,12 @@
 			<artifactId>kitty-dbms</artifactId>
 			<version>1.0.0</version>
 		</dependency>
+		<!--因配置外部TOMCAT而配置-->
+		<dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-tomcat</artifactId>
+            <scope>provided</scope>
+        </dependency>
 	</dependencies>
 	
 	<build>
