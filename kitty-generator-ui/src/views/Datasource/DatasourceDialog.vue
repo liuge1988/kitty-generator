@@ -28,7 +28,7 @@
         <span slot="footer" class="dialog-footer">
             <el-button size="small"  @click="visible = false">{{$t('action.cancel')}}</el-button>
             <el-button size="small"  type="primary" :loading="testLoading" @click="testConn">{{$t('action.test')}}</el-button>
-            <el-button size="small"  type="primary" :loading="testLoading" @click="saveConfig">{{$t('action.save')}}</el-button>
+            <el-button size="small"  type="primary" :loading="saveLoading" @click="saveConfig">{{$t('action.save')}}</el-button>
         </span>
 	</el-dialog>
 </template>
@@ -48,6 +48,7 @@ export default {
             },
             visible: true,
             testLoading: false,
+            saveLoading: false,
             baseUrl: this.global.baseUrl
 		}
 	},
@@ -65,6 +66,7 @@ export default {
 		},
 		// 保存配置
 		saveConfig: function () {
+            this.saveLoading = true
             localStorage.setItem('datasource', JSON.stringify(this.form))
             let dsStr = localStorage.getItem('datasource')
             if(dsStr != null) {
@@ -73,6 +75,7 @@ export default {
             } else {
                 this.$message({message: '保存失败, ' + res.msg, type: 'error'})
             }
+            this.saveLoading = false
 		},
 		// 测试连接
 		testConn: function () {

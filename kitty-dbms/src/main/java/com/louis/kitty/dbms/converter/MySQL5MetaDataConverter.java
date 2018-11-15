@@ -29,12 +29,12 @@ public class MySQL5MetaDataConverter extends CommonMetaDataConverter {
          * 如果没有注释，"InnoDB free: 4096 kB"这样存储引擎信息
          * 故需要字符串截取
          */
-        String desc = table.getDescription();
-        int endIndex = desc.lastIndexOf(";");
-        if (endIndex != -1) {
-            desc = desc.substring(0, endIndex);
-        }
-        table.setDescription(desc);
+//        String desc = table.getDescription();
+//        int endIndex = desc.lastIndexOf(";");
+//        if (endIndex != -1) {
+//            desc = desc.substring(0, endIndex);
+//        }
+//        table.setDescription(desc);
         return table;
     }
 

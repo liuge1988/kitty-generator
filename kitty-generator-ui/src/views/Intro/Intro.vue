@@ -13,7 +13,7 @@
         <span>1.配置数据源</span>
       </div>
       <div  class="image">
-        <img src="https://images.gitee.com/uploads/images/2018/1114/180317_ca91ceb2_645970.png" />
+        <img src="https://images.gitee.com/uploads/images/2018/1114/180145_1b395632_645970.png" />
       </div>
     </div>
     <div>
@@ -69,6 +69,6 @@ export default {
 img {
   
   width: 1000px;
-  height: 580px;
+  height: 500px;
 }
 </style>
