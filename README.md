@@ -1,6 +1,6 @@
 # kitty-generator
 
-#### 项目介绍
+### 项目介绍
 
 Kitty代码生成器，可以通过界面配置快速生成包括 model，dao，service，controller 以及页面的相关代码。
 
