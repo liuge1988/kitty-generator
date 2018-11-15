@@ -1,6 +1,6 @@
 # kitty-generator
 
-#### 项目介绍
+### 项目介绍
 
 Kitty代码生成器，可以通过界面配置快速生成包括 model，dao，service，controller 以及页面的相关代码。
 
@@ -149,6 +149,750 @@ kitty-generator-ui
 #### 3.编辑信息，生成代码
 
 ![输入图片说明](https://images.gitee.com/uploads/images/2018/1114/180642_2c4f986d_645970.png "屏幕截图.png")
+
+
+### 代码样例
+
+#### Model 代码样例
+
+```
+package com.louis.kitty.model;
+
+/**
+ * ---------------------------
+ * 字典表 (SysDict)         
+ * ---------------------------
+ * 作者：  kitty-generator
+ * 时间：  2018-11-14 17:24:01
+ * 说明：  我是由代码生成器生生成的
+ * ---------------------------
+ */
+public class SysDict {
+
+	/** 编号 */
+	private Long id;
+	/** 数据值 */
+	private String value;
+	/** 标签名 */
+	private String label;
+	/** 类型 */
+	private String type;
+	/** 描述 */
+	private String description;
+	/** 排序（升序） */
+	private Double sort;
+	/** 创建人 */
+	private String createBy;
+	/** 创建时间 */
+	private java.util.Date createTime;
+	/** 更新人 */
+	private String lastUpdateBy;
+	/** 更新时间 */
+	private java.util.Date lastUpdateTime;
+	/** 备注信息 */
+	private String remarks;
+	/** 是否删除  -1：已删除  0：正常 */
+	private Integer delFlag;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public String getLabel() {
+		return label;
+	}
+
+	public void setLabel(String label) {
+		this.label = label;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Double getSort() {
+		return sort;
+	}
+
+	public void setSort(Double sort) {
+		this.sort = sort;
+	}
+
+	public String getCreateBy() {
+		return createBy;
+	}
+
+	public void setCreateBy(String createBy) {
+		this.createBy = createBy;
+	}
+
+	public java.util.Date getCreateTime() {
+		return createTime;
+	}
+
+	public void setCreateTime(java.util.Date createTime) {
+		this.createTime = createTime;
+	}
+
+	public String getLastUpdateBy() {
+		return lastUpdateBy;
+	}
+
+	public void setLastUpdateBy(String lastUpdateBy) {
+		this.lastUpdateBy = lastUpdateBy;
+	}
+
+	public java.util.Date getLastUpdateTime() {
+		return lastUpdateTime;
+	}
+
+	public void setLastUpdateTime(java.util.Date lastUpdateTime) {
+		this.lastUpdateTime = lastUpdateTime;
+	}
+
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
+
+	public Integer getDelFlag() {
+		return delFlag;
+	}
+
+	public void setDelFlag(Integer delFlag) {
+		this.delFlag = delFlag;
+	}
+
+}
+```
+
+#### Dao 代码样例
+
+```
+package com.louis.kitty.dao;
+
+import java.util.List;
+
+import com.louis.kitty.model.SysDict;
+
+/**
+ * ---------------------------
+ * 字典表 (SysDictMapper)         
+ * ---------------------------
+ * 作者：  kitty-generator
+ * 时间：  2018-11-14 17:24:01
+ * 说明：  我是由代码生成器生生成的
+ * ---------------------------
+ */
+public interface SysDictMapper {
+
+	/**
+	 * 添加字典表
+	 * @param record
+	 * @return
+	 */
+    int add(SysDict record);
+
+    /**
+     * 删除字典表
+     * @param id
+     * @return
+     */
+    int delete(Long id);
+    
+    /**
+     * 修改字典表
+     * @param record
+     * @return
+     */
+    int update(SysDict record);
+    
+    /**
+     * 根据主键查询
+     * @param id
+     * @return
+     */    
+    SysDict findById(Long id);
+
+    /**
+     * 基础分页查询
+     * @param record
+     * @return
+     */    
+    List<SysDict> findPage();
+    
+}
+```
+
+#### SqlMap 代码样例
+
+```
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.louis.kitty.dao.SysDictMapper">
+
+  <resultMap id="BaseResultMap" type="com.louis.kitty.model.SysDict">
+	<id column="id" jdbcType="BIGINT" property="id" />
+	<result column="value" jdbcType="VARCHAR" property="value" />
+	<result column="label" jdbcType="VARCHAR" property="label" />
+	<result column="type" jdbcType="VARCHAR" property="type" />
+	<result column="description" jdbcType="VARCHAR" property="description" />
+	<result column="sort" jdbcType="DECIMAL" property="sort" />
+	<result column="create_by" jdbcType="VARCHAR" property="createBy" />
+	<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+	<result column="last_update_by" jdbcType="VARCHAR" property="lastUpdateBy" />
+	<result column="last_update_time" jdbcType="TIMESTAMP" property="lastUpdateTime" />
+	<result column="remarks" jdbcType="VARCHAR" property="remarks" />
+	<result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+  </resultMap>
+  
+  <insert id="add" parameterType="com.louis.kitty.model.SysDict">
+    insert into sys_dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="value != null">
+        value,
+      </if>
+      <if test="label != null">
+        label,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="lastUpdateBy != null">
+        last_update_by,
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time,
+      </if>
+      <if test="remarks != null">
+        remarks,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+    </trim>
+  </insert>
+
+  <delete id="delete" parameterType="java.lang.Long">
+    delete from sys_dict
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  
+  <update id="update" parameterType="com.louis.kitty.model.SysDict">
+    update sys_dict
+    <set>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+      <if test="value != null">
+        value = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        label = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=DECIMAL},
+      </if>
+      <if test="createBy != null">
+        create_by = #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastUpdateBy != null">
+        last_update_by = #{lastUpdateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="lastUpdateTime != null">
+        last_update_time = #{lastUpdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remarks != null">
+        remarks = #{remarks,jdbcType=VARCHAR},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+
+  <select id="findById" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select * from sys_dict
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  
+  <select id="findPage" resultMap="BaseResultMap">
+    select * from sys_dict
+  </select>
+  
+</mapper>
+```
+
+#### Service 代码样例
+
+
+```
+package com.louis.kitty.service;
+
+import com.louis.kitty.model.SysDict;
+import com.louis.kitty.core.service.CurdService;
+
+/**
+ * ---------------------------
+ * 字典表 (SysDictService)         
+ * ---------------------------
+ * 作者：  kitty-generator
+ * 时间：  2018-11-14 17:24:01
+ * 说明：  我是由代码生成器生生成的
+ * ---------------------------
+ */
+public interface SysDictService extends CurdService<SysDict> {
+
+}
+
+```
+
+#### ServiceImpl 代码样例
+
+
+```
+package com.louis.kitty.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.louis.kitty.core.page.MybatisPageHelper;
+import com.louis.kitty.core.page.PageRequest;
+import com.louis.kitty.core.page.PageResult;
+
+import com.louis.kitty.model.SysDict;
+import com.louis.kitty.dao.SysDictMapper;
+import com.louis.kitty.service.SysDictService;
+
+/**
+ * ---------------------------
+ * 字典表 (SysDictServiceImpl)         
+ * ---------------------------
+ * 作者：  kitty-generator
+ * 时间：  2018-11-14 17:24:01
+ * 说明：  我是由代码生成器生生成的
+ * ---------------------------
+ */
+@Service
+public class SysDictServiceImpl implements SysDictService {
+
+	@Autowired
+	private SysDictMapper sysDictMapper;
+
+	@Override
+	public int save(SysDict record) {
+		if(record.getId() == null || record.getId() == 0) {
+			return sysDictMapper.add(record);
+		}
+		return sysDictMapper.update(record);
+	}
+
+	@Override
+	public int delete(SysDict record) {
+		return sysDictMapper.delete(record.getId());
+	}
+
+	@Override
+	public int delete(List<SysDict> records) {
+		for(SysDict record:records) {
+			delete(record);
+		}
+		return 1;
+	}
+
+	@Override
+	public SysDict findById(Long id) {
+		return sysDictMapper.findById(id);
+	}
+
+	@Override
+	public PageResult findPage(PageRequest pageRequest) {
+		return MybatisPageHelper.findPage(pageRequest, sysDictMapper);
+	}
+	
+}
+
+```
+
+#### Controller 代码样例
+
+
+```
+package com.louis.kitty.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.louis.kitty.core.http.HttpResult;
+import com.louis.kitty.core.page.PageRequest;
+
+import com.louis.kitty.model.SysDict;
+import com.louis.kitty.service.SysDictService;
+
+/**
+ * ---------------------------
+ * 字典表 (SysDictController)         
+ * ---------------------------
+ * 作者：  kitty-generator
+ * 时间：  2018-11-14 17:24:01
+ * 说明：  我是由代码生成器生生成的
+ * ---------------------------
+ */
+@RestController
+@RequestMapping("sysDict")
+public class SysDictController {
+
+	@Autowired
+	private SysDictService sysDictService;
+
+	/**
+	 * 保存字典表
+	 * @param record
+	 * @return
+	 */	
+	@PostMapping(value="/save")
+	public HttpResult save(@RequestBody SysDict record) {
+		return HttpResult.ok(sysDictService.save(record));
+	}
+
+    /**
+     * 删除字典表
+     * @param records
+     * @return
+     */
+	@PostMapping(value="/delete")
+	public HttpResult delete(@RequestBody List<SysDict> records) {
+		return HttpResult.ok(sysDictService.delete(records));
+	}
+
+    /**
+     * 基础分页查询
+     * @param pageRequest
+     * @return
+     */    
+	@PostMapping(value="/findPage")
+	public HttpResult findPage(@RequestBody PageRequest pageRequest) {
+		return HttpResult.ok(sysDictService.findPage(pageRequest));
+	}
+	
+    /**
+     * 根据主键查询
+     * @param id
+     * @return
+     */ 	
+	@GetMapping(value="/findById")
+	public HttpResult findById(@RequestParam Long id) {
+		return HttpResult.ok(sysDictService.findById(id));
+	}
+}
+
+```
+
+#### View 代码样例
+
+
+```
+<template>
+  <div class="container" style="width:99%;margin-top:-25px;">
+	<!--工具栏-->
+	<div class="toolbar" style="float:left;padding-top:10px;padding-left:15px;">
+		<el-form :inline="true" :model="filters" :size="size">
+			<el-form-item>
+				<el-input v-model="filters.label" placeholder="名称"></el-input>
+			</el-form-item>
+			<el-form-item>
+				<kt-button :label="$t('action.search')" perms="sys:sysDict:view" type="primary" @click="findPage(null)"/>
+			</el-form-item>
+			<el-form-item>
+				<kt-button :label="$t('action.add')" perms="sys:sysDict:add" type="primary" @click="handleAdd" />
+			</el-form-item>
+		</el-form>
+	</div>
+	<!--表格内容栏-->
+	<kt-table permsEdit="sys:sysDict:edit" permsDelete="sys:sysDict:delete"
+		:data="pageResult" :columns="columns" 
+		@findPage="findPage" @handleEdit="handleEdit" @handleDelete="handleDelete">
+	</kt-table>
+	<!--新增编辑界面-->
+	<el-dialog :title="operation?'新增':'编辑'" width="40%" :visible.sync="editDialogVisible" :close-on-click-modal="false">
+		<el-form :model="dataForm" label-width="80px" :rules="dataFormRules" ref="dataForm" :size="size">
+			<el-form-item label="编号" prop="id"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.id" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="数据值" prop="value"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.value" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="标签名" prop="label"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.label" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="类型" prop="type"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.type" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="描述" prop="description"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.description" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="排序（升序）" prop="sort"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.sort" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="创建人" prop="createBy"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.createBy" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="创建时间" prop="createTime"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.createTime" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="更新人" prop="lastUpdateBy"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.lastUpdateBy" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="更新时间" prop="lastUpdateTime"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.lastUpdateTime" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="备注信息" prop="remarks"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.remarks" auto-complete="off"></el-input>
+			</el-form-item>
+			<el-form-item label="是否删除  -1：已删除  0：正常" prop="delFlag"  v-if="dataForm.isPrimaryKey">
+				<el-input v-model="dataForm.delFlag" auto-complete="off"></el-input>
+			</el-form-item>
+		</el-form>
+		<div slot="footer" class="dialog-footer">
+			<el-button :size="size" @click.native="editDialogVisible = false">{{$t('action.cancel')}}</el-button>
+			<el-button :size="size" type="primary" @click.native="submitForm" :loading="editLoading">{{$t('action.submit')}}</el-button>
+		</div>
+	</el-dialog>
+  </div>
+</template>
+
+<script>
+import KtTable from "@/views/Core/KtTable"
+import KtButton from "@/views/Core/KtButton"
+import { format } from "@/utils/datetime"
+export default {
+	components:{
+			KtTable,
+			KtButton
+	},
+	data() {
+		return {
+			size: 'small',
+			filters: {
+				label: ''
+			},
+			columns: [
+				{prop:"id", label:"编号", minWidth:100},
+				{prop:"value", label:"数据值", minWidth:100},
+				{prop:"label", label:"标签名", minWidth:100},
+				{prop:"type", label:"类型", minWidth:100},
+				{prop:"description", label:"描述", minWidth:100},
+				{prop:"sort", label:"排序（升序）", minWidth:100},
+				{prop:"createBy", label:"创建人", minWidth:100},
+				{prop:"createTime", label:"创建时间", minWidth:100},
+				{prop:"lastUpdateBy", label:"更新人", minWidth:100},
+				{prop:"lastUpdateTime", label:"更新时间", minWidth:100},
+				{prop:"remarks", label:"备注信息", minWidth:100},
+				{prop:"delFlag", label:"是否删除  -1：已删除  0：正常", minWidth:100},
+			],
+			pageRequest: { pageNum: 1, pageSize: 8 },
+			pageResult: {},
+
+			operation: false, // true:新增, false:编辑
+			editDialogVisible: false, // 新增编辑界面是否显示
+			editLoading: false,
+			dataFormRules: {
+				label: [
+					{ required: true, message: '请输入名称', trigger: 'blur' }
+				]
+			},
+			// 新增编辑界面数据
+			dataForm: {
+				id: null,
+				value: null,
+				label: null,
+				type: null,
+				description: null,
+				sort: null,
+				createBy: null,
+				createTime: null,
+				lastUpdateBy: null,
+				lastUpdateTime: null,
+				remarks: null,
+				delFlag: null,
+			}
+		}
+	},
+	methods: {
+		// 获取分页数据
+		findPage: function (data) {
+			if(data !== null) {
+				this.pageRequest = data.pageRequest
+			}
+			this.pageRequest.columnFilters = {label: {name:'label', value:this.filters.label}}
+			this.$api.sysDict.findPage(this.pageRequest).then((res) => {
+				this.pageResult = res.data
+			}).then(data!=null?data.callback:'')
+		},
+		// 批量删除
+		handleDelete: function (data) {
+			this.$api.sysDict.batchDelete(data.params).then(data!=null?data.callback:'')
+		},
+		// 显示新增界面
+		handleAdd: function () {
+			this.editDialogVisible = true
+			this.operation = true
+			this.dataForm = {
+				id: null,
+				value: null,
+				label: null,
+				type: null,
+				description: null,
+				sort: null,
+				createBy: null,
+				createTime: null,
+				lastUpdateBy: null,
+				lastUpdateTime: null,
+				remarks: null,
+				delFlag: null,
+			}
+		},
+		// 显示编辑界面
+		handleEdit: function (params) {
+			this.editDialogVisible = true
+			this.operation = false
+			this.dataForm = Object.assign({}, params.row)
+		},
+		// 编辑
+		submitForm: function () {
+			this.$refs.dataForm.validate((valid) => {
+				if (valid) {
+					this.$confirm('确认提交吗？', '提示', {}).then(() => {
+						this.editLoading = true
+						let params = Object.assign({}, this.dataForm)
+						this.$api.sysDict.save(params).then((res) => {
+							if(res.code == 200) {
+								this.$message({ message: '操作成功', type: 'success' })
+							} else {
+								this.$message({message: '操作失败, ' + res.msg, type: 'error'})
+							}
+							this.editLoading = false
+							this.$refs['dataForm'].resetFields()
+							this.editDialogVisible = false
+							this.findPage(null)
+						})
+					})
+				}
+			})
+		},
+		// 时间格式化
+      	dateFormat: function (row, column, cellValue, index){
+          	return format(row[column.property])
+      	}
+	},
+	mounted() {
+	}
+}
+</script>
+
+<style scoped>
+
+</style>
+```
 
 
 #### 参与贡献
