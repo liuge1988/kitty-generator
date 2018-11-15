@@ -50,6 +50,7 @@ QQ技术交流群： 429854222
 
 ##### 项目结构
 
+- kitty-generator-pom： 聚合打包模块
 - kitty-generator： 代码生成服务模块
 - kitty-dbms： 数据库操作业务封装模块
 - kitty-core： 核心代码模块，封装公共业务模块
@@ -85,6 +86,27 @@ kitty-generator-ui
 
 ### 安装教程
 
+1. 下载war包
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/1115/172326_5ee79ca4_645970.png "屏幕截图.png")
+
+2. 去掉后缀
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/1115/172603_5d3e3dbd_645970.png "屏幕截图.png")
+
+3. 修改地址
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/1115/172946_66c49374_645970.png "屏幕截图.png")
+
+4. 启动服务
+
+启动 Tomcat， 通过浏览器查看，如端口是8080，则访问地址为： http://localhost:8080/kitty-generator 。
+
+![输入图片说明](https://images.gitee.com/uploads/images/2018/1115/173240_8a58507f_645970.png "屏幕截图.png")
+
+
+### 源码安装教程
+
 #### 后端安装
 
 1. 下载源码
@@ -97,7 +119,7 @@ kitty-generator-ui
 
 3. 编译代码
 
-    找到 kitty-generator 工程的 pom.xml，执行 maven clean install 命令编译一键打包。
+    找到 kitty-generator-pom 工程的 pom.xml，执行 maven clean install 命令编译一键打包。
 
     一般来说不会有什么问题，如果还是编译不成功，可以按照优先级逐个编译试一试。
 
